@@ -1,7 +1,7 @@
 {
   "name": "jobluent-proxy",
   "version": "1.0.0",
-  "description": "Railway-compatible Express proxy for jobluent.au.liveblog365.com",
+  "description": "Railway/Deplexo compatible Express proxy for jobluent.au.liveblog365.com",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
