@@ -314,6 +314,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-s
 .footer-bottom{text-align:center;padding-top:30px;margin-top:30px;border-top:1px solid #2d3748;color:#718096}
 @media(max-width:768px){.hero h1{font-size:32px}.nav-links{gap:15px}.search-box{flex-direction:column;border-radius:20px}}
 </style>
+<meta name="google-site-verification" content="d-tVFEGSIg6li7C2_8MwQI6owZxohaV-rp8-FS0edAM" />
 </head>
 <body>
 <header class="header"><div class="container header-content"><div class="logo">Job<span>Founder</span></div>
