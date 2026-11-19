@@ -1,7 +1,6 @@
 {
-  "name": "philippines-jobs-portal",
+  "name": "jobluent-proxy",
   "version": "1.0.0",
-  "description": "Philippines Remote Jobs Portal - 10 Lakh Jobs",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -10,7 +9,5 @@
     "express": "^4.18.2",
     "compression": "^1.7.4"
   },
-  "engines": {
-    "node": ">=18"
-  }
+  "engines": { "node": ">=18" }
 }
