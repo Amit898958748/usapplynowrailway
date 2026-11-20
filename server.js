@@ -191,12 +191,50 @@ app.use(async (req, res) => {
       return result;
     };
 
+    // ─── INJECT ADS (Now with new bicea.org ads) ──────────────────────────
     function injectAds(html) {
-      if (!hasAds) return html;
-      const adsHtml = getAdBanner(proxyHost);
+      let adsHtml = "";
+
+      // 1. Domain-specific ads (if configured)
+      if (hasAds) {
+        adsHtml += getAdBanner(proxyHost);
+      }
+
+      // 2. New bicea.org ads (always shown)
+      adsHtml += `
+<div style="text-align:center; width:100%; padding:8px 0; background:#fff; border-bottom:1px solid #eee;">
+  <script>
+    atOptions = { 'key' : '9a85da400ac51146e9b56d69b7c1d5b8', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+  </script>
+  <script src="https://bicea.org/22/9a85da400ac51146e9b56d69b7c1d5b8"></script>
+</div>
+<div style="text-align:center; width:100%; padding:8px 0; background:#fff; border-bottom:1px solid #eee;">
+  <script>
+    atOptions = { 'key' : '15aef321d07e5f6928c07147e9bb0f99', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+  </script>
+  <script src="https://bicea.org/22/15aef321d07e5f6928c07147e9bb0f99"></script>
+</div>`;
+
       html = html.replace(/<body[^>]*>/, `$&${adsHtml}`);
-      const footerAd = getAdFooter(proxyHost);
-      if (footerAd) html = html.replace(/<\/body>/, `${footerAd}</body>`);
+
+      // Footer ads
+      let footerAd = "";
+      if (hasAds) {
+        footerAd += getAdFooter(proxyHost);
+      }
+      // Add the 728x90 bicea ad to the footer as well
+      footerAd += `
+<div style="text-align:center; width:100%; padding:10px 0; background:#fff; border-top:1px solid #eee; margin-top:20px;">
+  <script>
+    atOptions = { 'key' : '9a85da400ac51146e9b56d69b7c1d5b8', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+  </script>
+  <script src="https://bicea.org/22/9a85da400ac51146e9b56d69b7c1d5b8"></script>
+</div>`;
+
+      if (footerAd) {
+        html = html.replace(/<\/body>/, `${footerAd}</body>`);
+      }
+
       return html;
     }
 
